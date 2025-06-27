@@ -39,9 +39,3 @@ jobs:
       run: |
         echo "🤖 MLB prediction bot completed!"
         echo "Check your Twitter account for new tweets 🐦"
-        
-        # Commit to main branch
-        git config --local user.email "action@github.com"
-        git config --local user.name "MLB Prediction Bot"
-        git add index.html predictions.html || echo "No files to add"
-        git diff --staged --quiet || git commit -m "🤖 Daily predictions $(date +%Y-%m-%d)" || echo "Nothing to commit"
