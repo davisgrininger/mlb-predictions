@@ -347,7 +347,7 @@ class GitHubTwitterAutomation:
         
         <footer class="footer">
             <p>Generated at {{ generated_at.strftime('%I:%M %p ET') }} using Statcast data & machine learning</p>
-            <p><small>Not gambling advice • <a href="https://github.com/yourusername/mlb-predictions">View source code</a></small></p>
+            <p><small>Not gambling advice • <a href="https://github.com/davisgrininger/mlb-predictions">View source code</a></small></p>
         </footer>
     </div>
 </body>
