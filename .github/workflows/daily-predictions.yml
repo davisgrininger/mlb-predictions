@@ -1,4 +1,4 @@
-name: Daily MLB Predictions
+name: Daily MLB Predictions - Twitter Bot
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:  # Allow manual trigger
   
 jobs:
-  generate-predictions:
+  tweet-predictions:
     runs-on: ubuntu-latest
     
     steps:
@@ -24,7 +24,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pandas numpy scikit-learn pybaseball requests jinja2 tweepy
         
-    - name: 🤖 Generate predictions
+    - name: 🐦 Generate predictions and tweet
       env:
         ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
@@ -35,15 +35,10 @@ jobs:
       run: |
         python github_twitter_automation.py
         
-    - name: 📄 Deploy to GitHub Pages
+    - name: ✅ Job complete
       run: |
-        # Create simple deployment files
-        if [ -f docs/index.html ]; then
-          cp docs/index.html ./predictions.html
-          echo '<meta http-equiv="refresh" content="0; url=predictions.html">' > index.html
-        else
-          echo '<h1>No predictions available today</h1>' > index.html
-        fi
+        echo "🤖 MLB prediction bot completed!"
+        echo "Check your Twitter account for new tweets 🐦"
         
         # Commit to main branch
         git config --local user.email "action@github.com"
